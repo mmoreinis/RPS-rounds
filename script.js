@@ -1,11 +1,27 @@
-function main() {
-   let rounds = prompt("Number of rounds?");
-   if (round == even) alert("must be odd, try again");
-   round = 1;
+/* Global Variables */
+let score = [0,0];
+
+function main(){
+  let winner = "";
+  let rounds = setRounds();
 
 }
-//param: none
-//return:none
+
+
+function setRounds() {
+   let rounds = prompt("Number of rounds?");
+   if (rounds % 2 == 0) {
+    alert("must be odd, try again");
+    return setRounds();
+   }
+   return rounds;
+}
+
+/* RPS Rounds
+ * plays a round of RPS and tells the winner
+ * @param: none
+ * @return:none
+ */
 function rpsRound() {
     let u = "";
   let c ="";
@@ -19,11 +35,12 @@ function rpsRound() {
   winner = findWinner(u,c);
   alert("You chose " + u + " and I chose "+ c  +  winner  +  " won");  
 }
-// userturn
-// user can choose r, p, or s.
-// if bad Input, give new choice
-// @param:none
-// @return:choice
+/* userturn
+ * user can choose r, p, or s.
+ * if bad Input, give new choice
+ * @param:none
+ * @return:choice
+ */
 function userTurn() {
     let choice = prompt("enter r, p, or s");
     const turn = ["r","p","s"];
@@ -33,21 +50,25 @@ function userTurn() {
     }
     return choice;
 }
-// cpuTurn
-// computer choose between r, p, or s
-// @param:none
-// @return: choice
+
+/* cpuTurn
+ * computer choose between r, p, or s
+ * @param:none
+ * @return: choice
+ */
 function cpuTurn() {
     let choice = Math.floor(Math.random()*3);
     let moves = ["r","p","s"];
     return moves[choice];
 }
-// findWinner
-//  takes user and computer turn
-// decides who the winner is
-// returns winner
-// @param:u,c
-// @return: winner
+
+/* findWinner
+ * takes user and computer turn
+ * decides who the winner is
+ * returns winner
+ * @param:u,c
+ * @return: winner
+ */
 function findWinner(u,c) {
   let combo = u + c;
   let match = "";
